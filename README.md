@@ -100,6 +100,7 @@ interrupt [TIM0_OVF] void time0(void) //LED & 거리측정값 표시
 }
 ```
 적외선 센서를 이용하여 쓰레기의 양의 측정하여 쓰레기가 차지 않았으면 파란색 LED를 on하고 가득 차있으면 주황색 LED를 on한다.
+<br>
 <img src="https://user-images.githubusercontent.com/48309721/71664812-cc5d3f80-2d9d-11ea-898d-a19223445770.png" width="200"></img>
 <img src="https://user-images.githubusercontent.com/48309721/71664814-cebf9980-2d9d-11ea-9c3b-95f9bedfe5f6.png" width="200"></img>
 
