@@ -19,7 +19,7 @@ ___
 
 |부품명 | 부품 | 설명 |
 |----|----|----|
-|초움파 센서|<img src="https://user-images.githubusercontent.com/48309721/71659170-f0168a80-2d89-11ea-9bb4-be6faa9244c6.png" width="150"></img>| 물체와의 거리를 측정 하는 센서로, 사람의 손과의 거리를 측정한다.|
+|초파 센서|<img src="https://user-images.githubusercontent.com/48309721/71659170-f0168a80-2d89-11ea-9bb4-be6faa9244c6.png" width="150"></img>| 물체와의 거리를 측정 하는 센서로, 사람의 손과의 거리를 측정한다.|
 |적외선 센서|<img src="https://user-images.githubusercontent.com/48309721/71659539-54861980-2d8b-11ea-91dc-4abcc8978dc1.png" width="150"></img>|앞에 물체가 있는지를 감지하는 센서로, 쓰레기통이 가득 차는것을 감지한다.|
 |발광 다이오드|<img src="https://user-images.githubusercontent.com/48309721/71659645-aaf35800-2d8b-11ea-9f40-077dfeb1e6a1.png" width="150"></img>|평소에는 파란 LED가 켜지고, 쓰레기가 가득 차면 주황색 LED가 켜진다.|
 |서보 모터|<img src="https://user-images.githubusercontent.com/48309721/71659651-af1f7580-2d8b-11ea-8d44-4d1133ba1584.png" width="150"></img>|초음파 센서를 이용하여 사람의 손이 일정한 거리 안에 들어오면 모터를 돌려 뚜껑을 연다.|
