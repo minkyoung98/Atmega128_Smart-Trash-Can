@@ -42,10 +42,10 @@ void Distance_out(void){ //표시할 새 거리 측정값
     //서보모터  
     if(dist <= 15){ 
         //open
-        for(i=0;i<25;i++){ PORTE.3=1; delay_us(2400); PORTE.3=0; delay_ms(60); } // 90도
+        for(i = 0; i < 25; i++){ PORTE.3=1; delay_us(2400); PORTE.3=0; delay_ms(60); } // 90도
         delay_ms(2000);
         //close 
-        for(i=0;i<25;i++){ PORTE.3=1; delay_us(600); PORTE.3=0; delay_ms(60); } // -90도 
+        for(i = 0; i < 25; i++){ PORTE.3=1; delay_us(600); PORTE.3=0; delay_ms(60); } // -90도 
     }
   
     N1000 = dist/1000; //m 10자리 추출 
