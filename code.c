@@ -14,9 +14,8 @@ unsigned int N1000, N100, N10, N1;
 void Distance_out(void);
 
 void main(void){
-
-    DDRC=0XFF;
-    PORTC=0XFF;
+    DDRC = 0XFF;
+    PORTC = 0XFF;
 
     DDRB = 0xFF;
     DDRD = 0b11111101;
@@ -53,72 +52,70 @@ void main(void){
     } 
 }
 
-
-void Distance_out(void){ //Ç¥½ÃÇÒ »õ °Å¸® ÃøÁ¤°ª 
+void Distance_out(void){ //í‘œì‹œí•  ìƒˆ ê±°ë¦¬ ì¸¡ì •ê°’ 
 
     int buf;
     int i;
       
-    //¼­º¸¸ğÅÍ  
+    //ì„œë³´ëª¨í„°  
     if(dist <= 15){ 
-		//open
-        for(i=0;i<25;i++){ PORTE.3=1; delay_us(2400); PORTE.3=0; delay_ms(60); } // 90µµ
-		delay_ms(2000);
-		//close 
-		for(i=0;i<25;i++){ PORTE.3=1; delay_us(600); PORTE.3=0; delay_ms(60); } // -90µµ 
+	//open
+        for(i = 0; i < 25; i++){ PORTE.3=1; delay_us(2400); PORTE.3=0; delay_ms(60); } // 90ë„
+	delay_ms(2000);
+	//close 
+	for(i = 0; i < 25; i++){ PORTE.3=1; delay_us(600); PORTE.3=0; delay_ms(60); } // -90ë„ 
     }
   
-    N1000 = dist/1000; //m 10ÀÚ¸® ÃßÃâ 
+    N1000 = dist/1000; //m 10ìë¦¬ ì¶”ì¶œ 
     buf = dist%1000;
     
-    N100 = buf/100; //m 1ÀÚ¸® ÃßÃâ 
+    N100 = buf/100; //m 1ìë¦¬ ì¶”ì¶œ 
     buf = buf%100;
     
-    N10 = buf/10; //cm 10ÀÚ¸® ÃßÃâ 
-    N1 = buf%10; // cm 1ÀÚ¸® ÃßÃâ  
+    N10 = buf/10; //cm 10ìë¦¬ ì¶”ì¶œ 
+    N1 = buf%10; // cm 1ìë¦¬ ì¶”ì¶œ  
 }
 
-interrupt [TIM0_OVF] void time0(void) //LED & °Å¸®ÃøÁ¤°ª Ç¥½Ã  
-{ 
-	//Àû¿Ü¼± ¼¾¼­
+interrupt [TIM0_OVF] void time0(void) //LED & ê±°ë¦¬ì¸¡ì •ê°’ í‘œì‹œ  
+{
+//ì ì™¸ì„  ì„¼ì„œ
     volatile unsigned char a=0;
-    DDRE=0b00001000; //Æ÷Æ®E.3
+    DDRE=0b00001000; //í¬íŠ¸E.3
     
-
-    a=PINE.2;  // ¸·À¸¸é 0111 1111 // ¾È¸·À¸¸é 1111 1111
+    a=PINE.2;  // ë§‰ìœ¼ë©´ 0111 1111 // ì•ˆë§‰ìœ¼ë©´ 1111 1111
     
-    if(a==1){ //¾ÈÃ¡À»¶§ 
+    if(a==1){ //ì•ˆì°¼ì„ë•Œ 
     	PORTC=0xFF;
-    	PORTF=0x01; //ÆÄ¶õ LED ON 
-	}
-	else{ //Ã¡À»¶§ 
-		PORTC=0x00;
-		PORTF=0x02; //ÁÖÈ² LED ON 
-	}
+    	PORTF=0x01; //íŒŒë€ LED ON 
+    }
+    else{ //ì°¼ì„ë•Œ 
+	PORTC=0x00;
+	PORTF=0x02; //ì£¼í™© LED ON 
+    }
           
     unsigned char pat;
        
     TCNT0 = 176;    
     
-    // Ç¥½ÃÇÒ À§Ä¡ÀÇ Ç¥½Ã °ª 
+    // í‘œì‹œí•  ìœ„ì¹˜ì˜ í‘œì‹œ ê°’ 
     if(dsp_no == 0) pat = N1;
     else if(dsp_no == 1) pat = N10;
     else if(dsp_no == 2) pat = N100; 
     else pat = N1000;
      
-    // 7¼¼±×¸ÕÆ® Ç¥½Ã 
-    PORTG = seg_on[dsp_no]; //Ç¥½ÃÇÒ 7¼¼±×¸ÕÆ® ON 
+    // 7ì„¸ê·¸ë¨¼íŠ¸ í‘œì‹œ 
+    PORTG = seg_on[dsp_no]; //í‘œì‹œí•  7ì„¸ê·¸ë¨¼íŠ¸ ON 
     PORTB = (seg_pat[pat] & 0x70) | (PORTB & 0x0F);
     PORTD = ((seg_pat[pat] & 0x0F) << 4) | (PORTD & 0x0F);
     
-    dsp_no = (dsp_no + 1) % 4; //Ç¥½ÃÇÒ ¼¼±×¸ÕÆ® ¹øÈ£ °»½Å 
+    dsp_no = (dsp_no + 1) % 4; //í‘œì‹œí•  ì„¸ê·¸ë¨¼íŠ¸ ë²ˆí˜¸ ê°±ì‹  
 }
 
-interrupt [TIM2_OVF] void time2(void) //ÃÊÀ½ÆÄ ¼¾¼­ °Å¸® ÃøÁ¤  
+interrupt [TIM2_OVF] void time2(void) //ì´ˆìŒíŒŒ ì„¼ì„œ ê±°ë¦¬ ì¸¡ì •  
 {
     TCNT2 = 138;
     cnt++;
-    if(cnt>300) echo_st = 2; //3cm º¸´Ù Å©¸é  
+    if(cnt>300) echo_st = 2; //3cm ë³´ë‹¤ í¬ë©´  
 }
 
 interrupt [EXT_INT1] void trigger(void)
