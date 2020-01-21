@@ -119,4 +119,4 @@ interrupt [TIM2_OVF] void time2(void) //초음파 센서 거리 측정
 # 4. 동작 결과
 
 
-[![Everything Is AWESOME](https://user-images.githubusercontent.com/48309721/71665419-337bf380-2da0-11ea-903a-c17ad21b5270.JPG)](https://www.youtube.com/watch?v=EDEjoMPb_DU "Everything Is AWESOME")
+[![Everything Is AWESOME](https://user-images.githubusercontent.com/48309721/71665419-337bf380-2da0-11ea-903a-c17ad21b5270.JPG)](https://www.youtube.com/watch?v=EDEjoMPb_DU "클릭하여 YouTube로 이동")
